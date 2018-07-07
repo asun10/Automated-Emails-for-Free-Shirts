@@ -1,3 +1,5 @@
+//Code uses Google Scripts
+
 var EMAIL_SENT = "EMAIL_SENT";
 
 function sendEmails2() {
@@ -19,11 +21,12 @@ function sendEmails2() {
     var message6 = rowData[7];
     var message7 = rowData[8];
     var message8 = rowData[9];
+    //Create personalized message with each college name
     var message = 'Dear ' + recipient + ' admissions' + ',\n\n' + message1 + '\n\n' + message2 + ' ' + recipient + ' ' +
-    message3 + '\n\n' + message4 + '\n\n' + message5 + '\n' + message6 + '\n\n'+ message7 + '\n' + message8;
+    message3 + '\n\n' + message4 + '\n\n' + message5 + '\n' + message6 + '\n\n'+ message7 + '\n' + message8; 
     var subject = 'Question';
     MailApp.sendEmail(emailAddress, subject, message);
-    sheet.getRange(startRow + i, 11).setValue(EMAIL_SENT);
+    sheet.getRange(startRow + i, 11).setValue(EMAIL_SENT); //Mark each row as "Email_Sent" once it has been sent
       // Make sure the cell is updated right away in case the script is interrupted
       SpreadsheetApp.flush();
     }
